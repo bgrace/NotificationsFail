@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="NotificationFail" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -686,9 +688,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="360"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
@@ -703,15 +705,93 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="NotificationFail" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIh-A0-QCm">
+                                <rect key="frame" x="220" y="20" width="240" height="320"/>
+                                <clipView key="contentView" id="exA-M4-j1A">
+                                    <rect key="frame" x="1" y="1" width="223" height="318"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Nqi-V2-pyL">
+                                            <rect key="frame" x="0.0" y="0.0" width="223" height="318"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="223" height="318"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="N2r-3S-SCC">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GMZ-Jk-QH5">
+                                    <rect key="frame" x="224" y="1" width="15" height="318"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M9H-CG-oGQ">
+                                <rect key="frame" x="14" y="312" width="175" height="32"/>
+                                <buttonCell key="cell" type="push" title="With Additional Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Exu-68-MBr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="withAdditionalActionPressed:" target="XfG-lQ-9wD" id="8P2-YG-mhF"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-O6-Z3M">
+                                <rect key="frame" x="14" y="279" width="194" height="32"/>
+                                <buttonCell key="cell" type="push" title="Without Additional Action" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O0p-07-gzs">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="withoutAdditionalActionPressed:" target="XfG-lQ-9wD" id="0sS-nm-AoP"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QJV-5U-Bpq">
+                                <rect key="frame" x="18" y="261" width="132" height="18"/>
+                                <buttonCell key="cell" type="check" title="Found notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="P99-oq-SRV">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkCheckbox:" target="XfG-lQ-9wD" id="w0H-DR-YEE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Nqi-V2-pyL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QJV-5U-Bpq" secondAttribute="trailing" constant="69" id="5yd-JL-Ry8"/>
+                            <constraint firstItem="FIh-A0-QCm" firstAttribute="leading" secondItem="p4G-O6-Z3M" secondAttribute="trailing" constant="18" id="6g0-cc-G5n"/>
+                            <constraint firstAttribute="trailing" secondItem="FIh-A0-QCm" secondAttribute="trailing" constant="20" id="Fro-Ph-nnd"/>
+                            <constraint firstItem="M9H-CG-oGQ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="RfI-x4-8O6"/>
+                            <constraint firstItem="QJV-5U-Bpq" firstAttribute="top" secondItem="p4G-O6-Z3M" secondAttribute="bottom" constant="9" id="UgR-yf-qCD"/>
+                            <constraint firstItem="QJV-5U-Bpq" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="WGZ-fj-dIQ"/>
+                            <constraint firstItem="p4G-O6-Z3M" firstAttribute="top" secondItem="M9H-CG-oGQ" secondAttribute="bottom" constant="12" id="aKo-Uj-4FU"/>
+                            <constraint firstItem="M9H-CG-oGQ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="beD-xD-QPR"/>
+                            <constraint firstItem="p4G-O6-Z3M" firstAttribute="leading" secondItem="M9H-CG-oGQ" secondAttribute="leading" id="dC9-tN-k4m"/>
+                            <constraint firstItem="FIh-A0-QCm" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="fAN-Da-mFH"/>
+                            <constraint firstAttribute="bottom" secondItem="FIh-A0-QCm" secondAttribute="bottom" constant="20" id="uaa-gF-n8g"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M9H-CG-oGQ" secondAttribute="trailing" constant="20" symbolic="YES" id="yA9-UV-ZCN"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="foundNotificationCheckbox" destination="QJV-5U-Bpq" id="t3h-bT-HVB"/>
+                        <outlet property="textView" destination="Nqi-V2-pyL" id="JOU-eA-RZ2"/>
+                        <outlet property="withAdditionalActionButton" destination="M9H-CG-oGQ" id="xdO-zv-Hn9"/>
+                        <outlet property="withoutAdditionalActionButton" destination="p4G-O6-Z3M" id="Vli-rf-Q85"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="74" y="826"/>
         </scene>
     </scenes>
 </document>
